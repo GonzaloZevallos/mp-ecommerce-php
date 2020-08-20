@@ -92,7 +92,7 @@ $preference->payment_methods = $payment_methods; // Lo guardo en la preferencia
 $preference->date_create = date(DATE_ATOM);
 
 // external_reference
-$preference->external_reference = "";
+$preference->external_reference = "gonzalo.zev@gmail.com";
 
 // notification_url
 $preference->notification_url = "";

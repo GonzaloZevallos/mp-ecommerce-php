@@ -94,7 +94,7 @@ $preference->date_create = date(DATE_ATOM);
 $preference->external_reference = "gonzalo.zev@gmail.com";
 
 // notification_url
-$preference->notification_url = "";
+$preference->notification_url = $url . "/notifications?source_news=webhooks";
 
 // auto_return
 $preference->auto_return = "approved";

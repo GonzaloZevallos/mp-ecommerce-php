@@ -88,7 +88,7 @@
                         </div>
                         <div style="text-align: center">
                             <h2 class=" as-filter-button-text">
-                                Pending
+                                Success
                             </h2>
                             <div>
                                 <p>"Payment Method:" <?= $_GET["payment_type"]; ?></p>

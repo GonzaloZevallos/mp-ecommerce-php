@@ -73,8 +73,6 @@ $preference->back_urls = array(
   "failure" => $url . "/failure.php",
 );
 
-dd($preference->back_urls, $preference->items);
-
 // Configuro los métodos de pago
 $payment_methods = new MercadoPago\PaymentMethod();
 $payment_methods->installments = 6;

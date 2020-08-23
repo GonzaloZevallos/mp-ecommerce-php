@@ -4,7 +4,7 @@ $access_token = "APP_USR-6317427424180639-042414-47e969706991d3a442922b0702a0da4
 
 MercadoPago\SDK::setAccessToken($access_token);
 
-switch($_POST["type"]) {
+switch($_GET["type"]) {
   case "payment":
     $payment = MercadoPago\Payment.find_by_id($_POST["id"]);
 

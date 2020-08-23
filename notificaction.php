@@ -17,4 +17,4 @@ switch($_POST["type"]) {
     break;
 }
 
-echo "HTTP STATUS 200 (OK)";
+http_response_code(200);

@@ -68,7 +68,7 @@ $preference->payer = $payer; // Lo guardo en la preferencia
 
 // Configuro los back_urls en la preferencia
 $preference->back_urls = array(
-  "success" => $url . "/",
+  "success" => $url . "/success.php?collection_id=[PAYMENT_ID]&collection_status=approved&external_reference=[EXTERNAL_REFERENCE]&payment_type=credit_card&preference_id=[PREFERENCE_ID]&site_id=[SITE_ID]&processing_mode=aggregator&merchant_account_id=null",
   "pending" => $url . "/pending.php",
   "failure" => $url . "/failure.php",
 );

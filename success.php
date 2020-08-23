@@ -90,6 +90,11 @@
                             <h2 class=" as-filter-button-text">
                                 Pending
                             </h2>
+                            <div>
+                                <p>"Payment Method:" <?= $_GET["payment_type"]; ?></p>
+                                <p>"External Reference:" <?= $_GET["external_reference"]; ?></p>
+                                <p>"Payment ID:" <?= $_GET["collection_id"]; ?></p>
+                            </div>
                         </div>
                         <div class="as-accessories-results  as-search-desktop">
                             <div class="column as-search-filters" aria-hidden="false" id="as-search-filters" style="position: relative;">

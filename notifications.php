@@ -20,7 +20,7 @@ if($_SERVER['REQUEST_METHOD'] === "POST"){
     http_response_code(200);
     header('Content-Type: application/json');
     
-    $data = file_get_contents("https://api.mercadopago.com/v1/payments/" . $body->id . "?access_token=" . $access_token);
+    // $data = file_get_contents("https://api.mercadopago.com/v1/payments/" . $body->id . "?access_token=" . $access_token);
 
     echo $json;
 

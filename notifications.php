@@ -10,10 +10,10 @@ if($_SERVER['REQUEST_METHOD'] === "POST"){
   MercadoPago\SDK::setAccessToken($access_token);
 
   $json = file_get_contents("php://input");
+  
+  // header('Content-Type: application/json');
 
-  header('Content-Type: application/json');
-
-  echo $json;
+  // echo $json;
   
   $body = json_decode($json);
   
@@ -21,12 +21,12 @@ if($_SERVER['REQUEST_METHOD'] === "POST"){
     case "payment":
     $payment = MercadoPago\Payment::find_by_id($body->id);
     
-    http_response_code(200);
-    // header('Content-Type: application/json');
+    http_response_code(201);
+    header('Content-Type: application/json');
     
     // $data = file_get_contents("https://api.mercadopago.com/v1/payments/" . $body->id . "?access_token=" . $access_token);
 
-    // echo $json;
+    echo $json;
 
     // echo json_encode($data, JSON_PRETTY_PRINT);
 

@@ -32,7 +32,7 @@ MercadoPago\SDK::setAccessToken($access_token);
 // }
 
 $type = isset($_GET["type"]) ? $_GET["type"] : (isset($_POST["type"]) ? $_POST["type"] : null);
-$id = isset($_GET["id"]) ? $_GET["id"] : (isset($_POST["id"]) ? $_POST["id"] : null);
+$id = isset($_GET["data.id"]) ? $_GET["data.id"] : (isset($_POST["id"]) ? $_POST["id"] : null);
 
 error_log("========== TYPE ========== " . $type, 0);
 error_log("==========  ID  ========== " . $id, 0);

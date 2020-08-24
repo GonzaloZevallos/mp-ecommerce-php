@@ -34,7 +34,7 @@ if(isset($_GET["id"])){
 error_log($type, 0);
 error_log($id, 0);
 
-if($id && $type){
+if($id === true && $type === true){
 
   switch($type) {
     case "payment":

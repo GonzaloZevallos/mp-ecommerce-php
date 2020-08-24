@@ -8,16 +8,17 @@ MercadoPago\SDK::setAccessToken($access_token);
 $type = isset($_GET["type"]) ? $_GET["type"] : isset($_POST["type"]) ? $_POST["type"] : false;
 
 $id = isset($_GET["id"]) ? $_GET["id"] : isset($_POST["id"]) ? $_POST["id"] : false;
+error_log($type, 0);
+error_log($id, 0);
 
 if($id && $type){
 
   switch($type) {
     case "payment":
       $payment = MercadoPago\Payment.find_by_id($id);
-  
       // $data = file_put_contents(__DIR__ . "/notificationResponse.json",file_get_contents("https://api.mercadopago.com/v1/payments/" . $id . "?access_token=" . $access_token));
   
-      return http_response_code(200);
+      http_response_code(200);
   
       break;
     case "plan":
@@ -25,7 +26,7 @@ if($id && $type){
   
       // $data = file_put_contents(__DIR__ . "/notificationResponse.json",file_get_contents("https://api.mercadopago.com/v1/plans/" . $id . "?access_token=" . $access_token));
         
-      return http_response_code(200);
+      http_response_code(200);
   
       break;
     case "subscription":
@@ -33,7 +34,7 @@ if($id && $type){
   
       // $data = file_put_contents(__DIR__ . "/notificationResponse.json",file_get_contents("https://api.mercadopago.com/v1/subscriptions/" . $id . "?access_token=" . $access_token));
   
-      return http_response_code(200);
+      http_response_code(200);
   
       break;
     case "invoice":
@@ -41,18 +42,18 @@ if($id && $type){
   
       // $data = file_put_contents(__DIR__ . "/notificationResponse.json",file_get_contents("https://api.mercadopago.com/v1/invoices/" . $id . "?access_token=" . $access_token));
   
-      return http_response_code(200);
+      http_response_code(200);
   
       break;
   
     case "test":
   
-      return http_response_code(200);
+      http_response_code(200);
   
       break;
   
     default:
-      return http_response_code(500);
+      http_response_code(500);
   }
 
 } else {

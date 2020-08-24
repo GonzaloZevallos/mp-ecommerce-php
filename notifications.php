@@ -57,8 +57,12 @@ $body = json_decode($json);
 switch($body->type) {
   case "payment":
     $payment = MercadoPago\Payment::find_by_id($body->id);
-
+    
     http_response_code(200);
+    
+    $data = file_get_contents("https://api.mercadopago.com/v1/payments/" . $body->id . "?access_token=" . $access_token);
+    header('Content-Type: application/json');
+    echo json_encode($data, JSON_PRETTY_PRINT);
 
     break;
   case "plan":
@@ -75,8 +79,11 @@ switch($body->type) {
     break;
   case "invoice":
     $plan = MercadoPago\Invoice::find_by_id($body->id);
-
     http_response_code(200);
+    
+    $data = file_get_contents("https://api.mercadopago.com/v1/payments/" . $body->id . "?access_token=" . $access_token);
+    header('Content-Type: application/json');
+    echo json_encode($data, JSON_PRETTY_PRINT);
 
     break;
 

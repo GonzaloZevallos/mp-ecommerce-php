@@ -94,7 +94,7 @@ $preference->date_create = date(DATE_ATOM);
 $preference->external_reference = "gonzalo.zev@gmail.com";
 
 // notification_url
-$preference->notification_url = "http://gzevallos-mp-ecommerce-php.herokuapp.com/notifications?source_news=webhooks";
+$preference->notification_url = "http://gzevallos-mp-ecommerce-php.herokuapp.com/notifications.php?source_news=webhooks";
 
 // auto_return
 $preference->auto_return = "approved";

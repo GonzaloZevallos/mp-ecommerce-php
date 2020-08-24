@@ -6,7 +6,7 @@ $access_token = "APP_USR-6317427424180639-042414-47e969706991d3a442922b0702a0da4
 
 MercadoPago\SDK::setAccessToken($access_token);
 
-import_request_variables();
+$post_body = file_get_contents('php://input');
 
 function dd() {
     echo '<pre>';
@@ -46,9 +46,9 @@ function dd() {
 // error_log("========== TYPE ========== " . $type, 0);
 // error_log("==========  ID  ========== " . $id, 0);
 
-$id = (int)$_POST["id"];
+$id = $post_body["id"];
 
-switch($_POST["type"]) {
+switch($post_body["type"]) {
   case "payment":
     $payment = MercadoPago\Payment::find_by_id($id);
     // $data = file_put_contents(__DIR__ . "/notificationResponse.json",file_get_contents("https://api.mercadopago.com/v1/payments/" . $id . "?access_token=" . $access_token));

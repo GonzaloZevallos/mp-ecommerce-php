@@ -57,15 +57,12 @@ $body = json_decode($json);
 switch($body->type) {
   case "payment":
     $payment = MercadoPago\Payment::find_by_id($body->id);
-    $data = file_put_contents(__DIR__ . "/notificationResponse.json",file_get_contents("https://api.mercadopago.com/v1/payments/" . $id . "?access_token=" . $access_token));
 
     http_response_code(200);
 
     break;
   case "plan":
     $plan = MercadoPago\Plan::find_by_id($body->id);
-
-    // $data = file_put_contents(__DIR__ . "/notificationResponse.json",file_get_contents("https://api.mercadopago.com/v1/plans/" . $id . "?access_token=" . $access_token));
       
     http_response_code(200);
 
@@ -73,15 +70,11 @@ switch($body->type) {
   case "subscription":
     $plan = MercadoPago\Subscription::find_by_id($body->id);
 
-    // $data = file_put_contents(__DIR__ . "/notificationResponse.json",file_get_contents("https://api.mercadopago.com/v1/subscriptions/" . $id . "?access_token=" . $access_token));
-
     http_response_code(200);
 
     break;
   case "invoice":
     $plan = MercadoPago\Invoice::find_by_id($body->id);
-
-    // $data = file_put_contents(__DIR__ . "/notificationResponse.json",file_get_contents("https://api.mercadopago.com/v1/invoices/" . $id . "?access_token=" . $access_token));
 
     http_response_code(200);
 

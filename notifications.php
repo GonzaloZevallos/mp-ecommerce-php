@@ -6,8 +6,13 @@ $access_token = "APP_USR-6317427424180639-042414-47e969706991d3a442922b0702a0da4
 
 MercadoPago\SDK::setAccessToken($access_token);
 
+function dd() {
+    echo '<pre>';
+    array_map(function($x) {var_dump($x);}, func_get_args());
+    die;
+}
 
-// $type = $_GET["type"];
+// $type = $_POST["type"];
 
 // if(isset($_GET["type"])){
 //   $type = $_GET["type"];
@@ -19,7 +24,7 @@ MercadoPago\SDK::setAccessToken($access_token);
 //   }
 // }
 
-// $id = $_GET["data.id"];
+// $id = $_POST["id"];
 
 // if(isset($_GET["data.id"])){
 //   $id = $_GET["data.id"];
@@ -31,25 +36,24 @@ MercadoPago\SDK::setAccessToken($access_token);
 //   }
 // }
 
-$type = isset($_GET["type"]) ? $_GET["type"] : (isset($_POST["type"]) ? $_POST["type"] : null);
-$id = isset($_GET["data.id"]) ? $_GET["data.id"] : (isset($_POST["id"]) ? $_POST["id"] : null);
+// dd($_GET[0], $_GET["type"]);
 
-error_log("========== TYPE ========== " . $type, 0);
-error_log("==========  ID  ========== " . $id, 0);
+// $type = isset($_GET["type"]) ? $_GET["type"] : (isset($_POST["type"]) ? $_POST["type"] : null);
+// $id = isset($_GET["data.id"]) ? $_GET["data.id"] : (isset($_POST["id"]) ? $_POST["id"] : null);
 
-switch($type) {
+// error_log("========== TYPE ========== " . $type, 0);
+// error_log("==========  ID  ========== " . $id, 0);
+
+switch($_POST["type"]) {
   case "payment":
-    $payment = MercadoPago\Payment::find_by_id($id);
+    $payment = MercadoPago\Payment::find_by_id($_POST["id"]);
     // $data = file_put_contents(__DIR__ . "/notificationResponse.json",file_get_contents("https://api.mercadopago.com/v1/payments/" . $id . "?access_token=" . $access_token));
-    if(!empty($payment)){
-      error_log(json_encode($payment, JSON_PRETTY_PRINT), 0);
-    }
 
     http_response_code(200);
 
     break;
   case "plan":
-    $plan = MercadoPago\Plan::find_by_id($id);
+    $plan = MercadoPago\Plan::find_by_id($_POST["id"]);
 
     // $data = file_put_contents(__DIR__ . "/notificationResponse.json",file_get_contents("https://api.mercadopago.com/v1/plans/" . $id . "?access_token=" . $access_token));
       
@@ -57,7 +61,7 @@ switch($type) {
 
     break;
   case "subscription":
-    $plan = MercadoPago\Subscription::find_by_id($id);
+    $plan = MercadoPago\Subscription::find_by_id($_POST["id"]);
 
     // $data = file_put_contents(__DIR__ . "/notificationResponse.json",file_get_contents("https://api.mercadopago.com/v1/subscriptions/" . $id . "?access_token=" . $access_token));
 
@@ -65,7 +69,7 @@ switch($type) {
 
     break;
   case "invoice":
-    $plan = MercadoPago\Invoice::find_by_id($id);
+    $plan = MercadoPago\Invoice::find_by_id($_POST["id"]);
 
     // $data = file_put_contents(__DIR__ . "/notificationResponse.json",file_get_contents("https://api.mercadopago.com/v1/invoices/" . $id . "?access_token=" . $access_token));
 

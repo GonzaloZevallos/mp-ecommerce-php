@@ -6,13 +6,13 @@ $access_token = "APP_USR-6317427424180639-042414-47e969706991d3a442922b0702a0da4
 
 MercadoPago\SDK::setAccessToken($access_token);
 
-file_get_contents('php://input');
+// file_get_contents('php://input');
 
-function dd() {
-    echo '<pre>';
-    array_map(function($x) {var_dump($x);}, func_get_args());
-    die;
-}
+// function dd() {
+//     echo '<pre>';
+//     array_map(function($x) {var_dump($x);}, func_get_args());
+//     die;
+// }
 
 // $type = $_POST["type"];
 
@@ -48,20 +48,20 @@ function dd() {
 
 // dd($post_body);
 
-$type = $_POST["type"];
-$id = $_POST["id"];
+// $type = $_POST["type"];
+// $id = $_POST["id"];
 
 
-switch($post_body["type"]) {
+switch($_POST["type"]) {
   case "payment":
-    $payment = MercadoPago\Payment::find_by_id($id);
+    // $payment = MercadoPago\Payment::find_by_id($_POST["id"]);
     // $data = file_put_contents(__DIR__ . "/notificationResponse.json",file_get_contents("https://api.mercadopago.com/v1/payments/" . $id . "?access_token=" . $access_token));
 
     http_response_code(200);
 
     break;
   case "plan":
-    $plan = MercadoPago\Plan::find_by_id($id);
+    // $plan = MercadoPago\Plan::find_by_id($_POST["id"]);
 
     // $data = file_put_contents(__DIR__ . "/notificationResponse.json",file_get_contents("https://api.mercadopago.com/v1/plans/" . $id . "?access_token=" . $access_token));
       
@@ -69,7 +69,7 @@ switch($post_body["type"]) {
 
     break;
   case "subscription":
-    $plan = MercadoPago\Subscription::find_by_id($id);
+    // $plan = MercadoPago\Subscription::find_by_id($_POST["id"]);
 
     // $data = file_put_contents(__DIR__ . "/notificationResponse.json",file_get_contents("https://api.mercadopago.com/v1/subscriptions/" . $id . "?access_token=" . $access_token));
 
@@ -77,7 +77,7 @@ switch($post_body["type"]) {
 
     break;
   case "invoice":
-    $plan = MercadoPago\Invoice::find_by_id($id);
+    // $plan = MercadoPago\Invoice::find_by_id($_POST["id"]);
 
     // $data = file_put_contents(__DIR__ . "/notificationResponse.json",file_get_contents("https://api.mercadopago.com/v1/invoices/" . $id . "?access_token=" . $access_token));
 

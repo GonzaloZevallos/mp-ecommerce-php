@@ -7,29 +7,29 @@ $access_token = "APP_USR-6317427424180639-042414-47e969706991d3a442922b0702a0da4
 MercadoPago\SDK::setAccessToken($access_token);
 
 
-$type;
+$type = $_POST["type"];
 
-if(isset($_GET["type"])){
-  $type = $_GET["type"];
-} else {
-  if(isset($_POST["type"])){
-    $type = $_POST["type"];
-  } else {
-    $type = false;
-  }
-}
+// if(isset($_GET["type"])){
+//   $type = $_GET["type"];
+// } else {
+//   if(isset($_POST["type"])){
+//     $type = $_POST["type"];
+//   } else {
+//     $type = false;
+//   }
+// }
 
-$id;
+$id = $_POST["id"];
 
-if(isset($_GET["data.id"])){
-  $id = $_GET["data.id"];
-} else {
-  if(isset($_POST["id"])){
-    $id = $_POST["id"];
-  } else {
-    $id = false;
-  }
-}
+// if(isset($_GET["data.id"])){
+//   $id = $_GET["data.id"];
+// } else {
+//   if(isset($_POST["id"])){
+//     $id = $_POST["id"];
+//   } else {
+//     $id = false;
+//   }
+// }
 
 error_log($type, 0);
 error_log($id, 0);

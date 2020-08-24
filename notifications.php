@@ -6,7 +6,7 @@ $access_token = "APP_USR-6317427424180639-042414-47e969706991d3a442922b0702a0da4
 
 MercadoPago\SDK::setAccessToken($access_token);
 
-$post_body = file_get_contents('php://input');
+file_get_contents('php://input');
 
 function dd() {
     echo '<pre>';
@@ -46,7 +46,11 @@ function dd() {
 // error_log("========== TYPE ========== " . $type, 0);
 // error_log("==========  ID  ========== " . $id, 0);
 
-$id = $post_body["id"];
+// dd($post_body);
+
+$type = $_POST["type"];
+$id = $_POST["id"];
+
 
 switch($post_body["type"]) {
   case "payment":

@@ -26,7 +26,7 @@ if($_SERVER['REQUEST_METHOD'] === "POST"){
     
     // $data = file_get_contents("https://api.mercadopago.com/v1/payments/" . $body->id . "?access_token=" . $access_token);
 
-    echo "========= Request Body ========= $json";
+    log("========= Request Body ========= $json");
 
     // echo json_encode($data, JSON_PRETTY_PRINT);
 

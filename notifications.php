@@ -21,8 +21,8 @@ if(isset($_GET["type"])){
 
 $id;
 
-if(isset($_GET["user.id"])){
-  $id = $_GET["user.id"];
+if(isset($_GET["data.id"])){
+  $id = $_GET["data.id"];
 } else {
   if(isset($_POST["id"])){
     $id = $_POST["id"];

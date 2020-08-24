@@ -10,6 +10,10 @@ if($_SERVER['REQUEST_METHOD'] === "POST"){
   MercadoPago\SDK::setAccessToken($access_token);
 
   $json = file_get_contents("php://input");
+
+  header('Content-Type: application/json');
+
+  echo $json;
   
   $body = json_decode($json);
   
@@ -18,57 +22,57 @@ if($_SERVER['REQUEST_METHOD'] === "POST"){
     $payment = MercadoPago\Payment::find_by_id($body->id);
     
     http_response_code(200);
-    header('Content-Type: application/json');
+    // header('Content-Type: application/json');
     
     // $data = file_get_contents("https://api.mercadopago.com/v1/payments/" . $body->id . "?access_token=" . $access_token);
 
-    echo $json;
+    // echo $json;
 
     // echo json_encode($data, JSON_PRETTY_PRINT);
 
     break;
-  case "plan":
-    $plan = MercadoPago\Plan::find_by_id($body->id);
+    case "plan":
+      $plan = MercadoPago\Plan::find_by_id($body->id);
+        
+      http_response_code(200);
+      header('Content-Type: application/json');
       
-    http_response_code(200);
-    header('Content-Type: application/json');
-    
-    $data = file_get_contents("https://api.mercadopago.com/v1/plans/" . $body->id . "?access_token=" . $access_token);
+      $data = file_get_contents("https://api.mercadopago.com/v1/plans/" . $body->id . "?access_token=" . $access_token);
 
-    echo json_encode($data, JSON_PRETTY_PRINT);
+      echo json_encode($data, JSON_PRETTY_PRINT);
 
-    break;
-  case "subscription":
-    $plan = MercadoPago\Subscription::find_by_id($body->id);
+      break;
+    case "subscription":
+      $plan = MercadoPago\Subscription::find_by_id($body->id);
 
-    http_response_code(200);
-    header('Content-Type: application/json');
-    
-    $data = file_get_contents("https://api.mercadopago.com/v1/subscriptions/" . $body->id . "?access_token=" . $access_token);
+      http_response_code(200);
+      header('Content-Type: application/json');
+      
+      $data = file_get_contents("https://api.mercadopago.com/v1/subscriptions/" . $body->id . "?access_token=" . $access_token);
 
-    echo json_encode($data, JSON_PRETTY_PRINT);
+      echo json_encode($data, JSON_PRETTY_PRINT);
 
-    break;
-  case "invoice":
-    $plan = MercadoPago\Invoice::find_by_id($body->id);
-    
-    http_response_code(200);
-    header('Content-Type: application/json');
-    
-    $data = file_get_contents("https://api.mercadopago.com/v1/invoices/" . $body->id . "?access_token=" . $access_token);
+      break;
+    case "invoice":
+      $plan = MercadoPago\Invoice::find_by_id($body->id);
+      
+      http_response_code(200);
+      header('Content-Type: application/json');
+      
+      $data = file_get_contents("https://api.mercadopago.com/v1/invoices/" . $body->id . "?access_token=" . $access_token);
 
-    echo json_encode($data, JSON_PRETTY_PRINT);
+      echo json_encode($data, JSON_PRETTY_PRINT);
 
-    break;
+      break;
 
-  case "test":
+    case "test":
 
-    http_response_code(200);
+      http_response_code(200);
 
-    break;
-  default:
-    http_response_code(400);
-    break;
+      break;
+    default:
+      http_response_code(400);
+      break;
   }
 } else {
   http_response_code(500);

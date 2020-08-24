@@ -8,7 +8,7 @@ MercadoPago\SDK::setAccessToken($access_token);
 
 $json = file_get_contents('php://input');
 
-$body = json_decode($json);
+$body = json_decode($json, true);
 
 // function dd() {
 //     echo '<pre>';
@@ -54,34 +54,34 @@ $body = json_decode($json);
 // $id = $_POST["id"];
 
 
-switch($body->type) {
+switch($body["type"]) {
   case "payment":
-    $payment = MercadoPago\Payment::find_by_id($body->id);
+    $payment = MercadoPago\Payment::find_by_id($body["id"]);
     
     http_response_code(200);
     
-    $data = file_get_contents("https://api.mercadopago.com/v1/payments/" . $body->id . "?access_token=" . $access_token);
+    $data = file_get_contents("https://api.mercadopago.com/v1/payments/" . $body["id"] . "?access_token=" . $access_token);
     header('Content-Type: application/json');
     echo json_encode($data, JSON_PRETTY_PRINT);
 
     break;
   case "plan":
-    $plan = MercadoPago\Plan::find_by_id($body->id);
+    $plan = MercadoPago\Plan::find_by_id($body["id"]);
       
     http_response_code(200);
 
     break;
   case "subscription":
-    $plan = MercadoPago\Subscription::find_by_id($body->id);
+    $plan = MercadoPago\Subscription::find_by_id($body["id"]);
 
     http_response_code(200);
 
     break;
   case "invoice":
-    $plan = MercadoPago\Invoice::find_by_id($body->id);
+    $plan = MercadoPago\Invoice::find_by_id($body["id"]);
     http_response_code(200);
     
-    $data = file_get_contents("https://api.mercadopago.com/v1/payments/" . $body->id . "?access_token=" . $access_token);
+    $data = file_get_contents("https://api.mercadopago.com/v1/payments/" . $body["id"] . "?access_token=" . $access_token);
     header('Content-Type: application/json');
     echo json_encode($data, JSON_PRETTY_PRINT);
 

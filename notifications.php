@@ -6,6 +6,8 @@ $access_token = "APP_USR-6317427424180639-042414-47e969706991d3a442922b0702a0da4
 
 MercadoPago\SDK::setAccessToken($access_token);
 
+import_request_variables();
+
 function dd() {
     echo '<pre>';
     array_map(function($x) {var_dump($x);}, func_get_args());

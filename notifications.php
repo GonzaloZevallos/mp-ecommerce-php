@@ -31,13 +31,16 @@ $id = $_GET["data.id"];
 //   }
 // }
 
-error_log($type, 0);
-error_log($id, 0);
+error_log("========== TYPE ========== " . $type, 0);
+error_log("==========  ID  ========== " . $id, 0);
 
 switch($type) {
   case "payment":
     $payment = MercadoPago\Payment.find_by_id($id);
     // $data = file_put_contents(__DIR__ . "/notificationResponse.json",file_get_contents("https://api.mercadopago.com/v1/payments/" . $id . "?access_token=" . $access_token));
+    if(!empty($payment)){
+      error_log(json_encode($payment, JSON_PRETTY_PRINT), 0);
+    }
 
     http_response_code(200);
 
@@ -69,10 +72,10 @@ switch($type) {
 
   case "test":
 
-    http_response_code(200);
+    header("HTTP STATUS 200 (OK)");
 
     break;
 
   default:
-    http_response_code(500);
+    http_response_code(404);
 }

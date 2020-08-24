@@ -54,7 +54,7 @@ $body = json_decode($json);
 // $id = $_POST["id"];
 
 
-switch($body["type"]) {
+switch($body->type) {
   case "payment":
     // $payment = MercadoPago\Payment::find_by_id($_POST["id"]);
     // $data = file_put_contents(__DIR__ . "/notificationResponse.json",file_get_contents("https://api.mercadopago.com/v1/payments/" . $id . "?access_token=" . $access_token));
